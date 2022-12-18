@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.CQRS.Server", "Sandbox.CQRS.Server.csproj", "{EF278676-E0B4-48DA-BBB7-9A72B67B3EC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.CQRS.Server", "Sandbox.CQRS.Server.csproj", "{EF278676-E0B4-48DA-BBB7-9A72B67B3EC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.CQRS.Domain", "..\Sandbox.CQRS.Domain\Sandbox.CQRS.Domain.csproj", "{1EB37560-8783-48F4-80A8-C04DE66C5840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.CQRS.Persistence.File", "..\Sandbox.CQRS.Persistence.File\Sandbox.CQRS.Persistence.File.csproj", "{442CA9AA-DBE6-4D6C-ABC0-BFCE99A546A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.CQRS.Domain.Contracts", "..\Sandbox.CQRS.Domain.Contracts\Sandbox.CQRS.Domain.Contracts.csproj", "{924B51ED-346C-4207-886A-014B397B115C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{EF278676-E0B4-48DA-BBB7-9A72B67B3EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF278676-E0B4-48DA-BBB7-9A72B67B3EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF278676-E0B4-48DA-BBB7-9A72B67B3EC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EB37560-8783-48F4-80A8-C04DE66C5840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB37560-8783-48F4-80A8-C04DE66C5840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB37560-8783-48F4-80A8-C04DE66C5840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB37560-8783-48F4-80A8-C04DE66C5840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442CA9AA-DBE6-4D6C-ABC0-BFCE99A546A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442CA9AA-DBE6-4D6C-ABC0-BFCE99A546A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442CA9AA-DBE6-4D6C-ABC0-BFCE99A546A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442CA9AA-DBE6-4D6C-ABC0-BFCE99A546A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{924B51ED-346C-4207-886A-014B397B115C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924B51ED-346C-4207-886A-014B397B115C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924B51ED-346C-4207-886A-014B397B115C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924B51ED-346C-4207-886A-014B397B115C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
