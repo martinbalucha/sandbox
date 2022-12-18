@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sandbox.CQRS.Domain.Contracts.Entities;
 
 namespace Sandbox.CQRS.Domain.Interfaces;
-internal interface IRepository
+
+public interface IRepository<T> where T : IEntity
 {
+    Task<T?> FindByIdAsync(Guid id);
 }

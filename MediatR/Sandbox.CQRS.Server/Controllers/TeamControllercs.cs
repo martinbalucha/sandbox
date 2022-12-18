@@ -1,7 +1,10 @@
-﻿using MediatR;
+﻿using Mapster;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Sandbox.CQRS.Domain.Commands;
 using Sandbox.CQRS.Domain.Contracts.Entities;
 using Sandbox.CQRS.Domain.Queries;
+using Sandbox.CQRS.Server.Dtos;
 
 namespace Sandbox.CQRS.Server.Controllers;
 
@@ -21,6 +24,15 @@ public class TeamControllercs : ControllerBase
 	{
 		var query = new GetTeamQuery(id);
 		var result = await mediator.Send(query);
+
+		return null;
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> Create([FromBody] CreateTeamDto team)
+	{
+		var command = team.Adapt<CreateTeamCommand>();
+		var result = (await mediator.Send(command)).Adapt<TeamDto>();
 
 		return Ok(result);
 	}
