@@ -1,3 +1,7 @@
+using Mapster;
+using Sandbox.CQRS.Server.Mapping;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +18,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+var configurationServiceAssembly = Assembly.GetAssembly(typeof(MappingConfiguration));
+if (configurationServiceAssembly != null)
+{
+    TypeAdapterConfig.GlobalSettings.Scan(configurationServiceAssembly);
 }
 
 app.UseHttpsRedirection();

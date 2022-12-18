@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sandbox.CQRS.Domain.Contracts.Interfaces.Commands;
-internal interface IGetTeamPlayersHandler
+namespace Sandbox.CQRS.Domain.Interfaces;
+internal interface IRepository
 {
 }

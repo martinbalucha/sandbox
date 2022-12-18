@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Sandbox.CQRS.Domain.Contracts.Entities;
-using Sandbox.CQRS.Domain.Contracts.Interfaces;
+using Sandbox.CQRS.Domain.Interfaces;
 using Sandbox.CQRS.Domain.Queries;
 using System;
 using System.Collections.Generic;
