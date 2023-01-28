@@ -4,5 +4,7 @@ namespace Sandbox.CQRS.Domain.Interfaces;
 
 public interface IRepository<T> where T : IEntity
 {
+    Task CreateAsync(T entity);
+
     Task<T?> FindByIdAsync(Guid id);
 }

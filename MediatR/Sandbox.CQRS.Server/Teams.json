@@ -1,0 +1,16 @@
+{
+  "Teams": [
+    {
+      "Id": "563f336b-79af-48e4-aaad-f3e2ac6ebbe8",
+      "Name": "Chelsea F.C."
+    },
+    {
+      "Id": "0505b775-0168-4e34-aac9-75be7692949f",
+      "Name": "Real Madrid C.F."
+    },
+    {
+      "Id": "d7d37a30-7d4a-4683-b4f5-a47877b88574",
+      "Name": "Inter Milan"
+    }
+  ]
+}

@@ -18,6 +18,19 @@ public class JsonRepository : IRepository<Team>
         this.file = file?? throw new ArgumentNullException(nameof(file));
     }
 
+    public async Task CreateAsync(Team entity)
+    {
+        string jsonString = await file.ReadAllTextAsync(configuration.FilePath!);
+
+        var teams = JsonSerializer.Deserialize<List<Team>>(jsonString)
+            ?? throw new Exception("An error occurred during the reading");
+
+        teams.Add(entity);
+
+        jsonString = JsonSerializer.Serialize(teams);
+        await file.WriteAllTextAsync(configuration.FilePath!, jsonString);
+    }
+
     public async Task<Team?> FindByIdAsync(Guid id)
     {
         string jsonString = await file.ReadAllTextAsync(configuration.FilePath!);

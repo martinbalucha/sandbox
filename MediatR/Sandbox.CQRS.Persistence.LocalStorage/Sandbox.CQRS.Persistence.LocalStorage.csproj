@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.IO.Abstractions" Version="19.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sandbox.CQRS.Domain.Contracts\Sandbox.CQRS.Domain.Contracts.csproj" />
+    <ProjectReference Include="..\Sandbox.CQRS.Domain\Sandbox.CQRS.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

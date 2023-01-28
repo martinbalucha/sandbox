@@ -11,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Configuration.AddJsonFile("LocalStoragePersistenceConfiguration.json");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
