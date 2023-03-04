@@ -1,14 +1,1 @@
-[
-  {
-    "Id": "563f336b-79af-48e4-aaad-f3e2ac6ebbe8",
-    "Name": "Chelsea F.C."
-  },
-  {
-    "Id": "0505b775-0168-4e34-aac9-75be7692949f",
-    "Name": "Real Madrid C.F."
-  },
-  {
-    "Id": "d7d37a30-7d4a-4683-b4f5-a47877b88574",
-    "Name": "Inter Milan"
-  }
-]
+[{"Id":"563f336b-79af-48e4-aaad-f3e2ac6ebbe8","Name":"Chelsea F.C.","Players":null},{"Id":"0505b775-0168-4e34-aac9-75be7692949f","Name":"Real Madrid C.F.","Players":null},{"Id":"d7d37a30-7d4a-4683-b4f5-a47877b88574","Name":"Inter Milan","Players":null},{"Id":"4fea88be-3fd9-4357-9d3d-03d13d3b8123","Name":"Arsenal F.C.","Players":null},{"Id":"1933f9c7-d923-467e-8f0f-cea1b4480b3b","Name":"Arsenal F.C.","Players":null},{"Id":"6e3664ab-c13d-467d-a1bb-75bb27e946fa","Name":"Paris Saint-Germain","Players":null},{"Id":"d8eee5c5-50c1-45cc-bf9d-bbc0d82aa8b2","Name":"Manchester City F.C.","Players":null}]

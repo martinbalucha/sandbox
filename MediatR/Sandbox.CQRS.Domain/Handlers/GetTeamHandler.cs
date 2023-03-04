@@ -3,7 +3,7 @@ using Sandbox.CQRS.Domain.Contracts.Entities;
 using Sandbox.CQRS.Domain.Interfaces;
 using Sandbox.CQRS.Domain.Queries;
 
-namespace Sandbox.CQRS.Domain;
+namespace Sandbox.CQRS.Domain.Handlers;
 
 public class GetTeamHandler : IRequestHandler<GetTeamQuery, Team?>
 {

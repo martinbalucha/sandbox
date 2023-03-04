@@ -1,6 +1,5 @@
 using Mapster;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Sandbox.CQRS.Domain;
 using Sandbox.CQRS.Domain.Contracts.Entities;
 using Sandbox.CQRS.Domain.Handlers;
 using Sandbox.CQRS.Domain.Interfaces;

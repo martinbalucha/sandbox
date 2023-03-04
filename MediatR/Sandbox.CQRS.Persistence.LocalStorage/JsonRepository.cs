@@ -1,7 +1,5 @@
 ﻿using Sandbox.CQRS.Domain.Contracts.Entities;
 using Sandbox.CQRS.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Text.Json;
 
@@ -15,7 +13,7 @@ public class JsonRepository : IRepository<Team>
     public JsonRepository(LocalStoragePersistenceConfiguration configuration, IFile file)
     {
         this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        this.file = file?? throw new ArgumentNullException(nameof(file));
+        this.file = file ?? throw new ArgumentNullException(nameof(file));
     }
 
     public async Task CreateAsync(Team entity)

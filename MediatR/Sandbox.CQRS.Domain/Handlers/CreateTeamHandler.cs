@@ -2,15 +2,10 @@
 using Sandbox.CQRS.Domain.Commands;
 using Sandbox.CQRS.Domain.Contracts.Entities;
 using Sandbox.CQRS.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sandbox.CQRS.Domain.Handlers;
 
-public class CreateTeamHandler : IRequestHandler<CreateTeamCommand, Team>
+public class CreateTeamHandler : IRequestHandler<CreateTeamCommand, Guid>
 {
     private readonly IRepository<Team> repository;
 
@@ -19,8 +14,15 @@ public class CreateTeamHandler : IRequestHandler<CreateTeamCommand, Team>
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
 
-    public Task<Team> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CreateTeamCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var team = new Team 
+        {
+            Id = Guid.NewGuid(),
+            Name = request.Name
+        };
+
+        await repository.CreateAsync(team);
+        return team.Id;
     }
 }

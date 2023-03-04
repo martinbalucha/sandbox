@@ -34,11 +34,10 @@ public class TeamController : ControllerBase
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Create([FromBody] CreateTeamDto team)
+	public async Task<ActionResult<Guid>> Create([FromBody] CreateTeamCommand command)
 	{
-		var command = team.Adapt<CreateTeamCommand>();
-		var result = (await mediator.Send(command)).Adapt<TeamDto>();
+		var id = await mediator.Send(command);
 
-		return Ok(result);
+		return Ok(id);
 	}
 }
