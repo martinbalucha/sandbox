@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.CQRS.Domain", "..\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.CQRS.Domain.Contracts", "..\Sandbox.CQRS.Domain.Contracts\Sandbox.CQRS.Domain.Contracts.csproj", "{924B51ED-346C-4207-886A-014B397B115C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.CQRS.Persistence.LocalStorage", "..\Sandbox.CQRS.Persistence.LocalStorage\Sandbox.CQRS.Persistence.LocalStorage.csproj", "{EE70E9E4-1D72-40E8-B68E-0A603A5B31EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.CQRS.Persistence.LocalStorage", "..\Sandbox.CQRS.Persistence.LocalStorage\Sandbox.CQRS.Persistence.LocalStorage.csproj", "{EE70E9E4-1D72-40E8-B68E-0A603A5B31EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

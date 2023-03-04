@@ -2,30 +2,35 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Sandbox.CQRS.Domain.Commands;
-using Sandbox.CQRS.Domain.Contracts.Entities;
 using Sandbox.CQRS.Domain.Queries;
 using Sandbox.CQRS.Server.Dtos;
 
 namespace Sandbox.CQRS.Server.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class TeamControllercs : ControllerBase
+[Route("api/[controller]")]
+public class TeamController : ControllerBase
 {
     private readonly IMediator mediator;
 
-	public TeamControllercs(IMediator mediator)
+	public TeamController(IMediator mediator)
 	{
 		this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 	}
 
-	[HttpGet]
-	public async Task<Team> Get([FromQuery] Guid id)
+	[HttpGet("{id}")]
+	public async Task<ActionResult<TeamDto>> Get(Guid id)
 	{
 		var query = new GetTeamQuery(id);
 		var result = await mediator.Send(query);
 
-		return null;
+		if (result is null)
+		{
+			return NotFound();
+		}
+
+		var teamDto = result.Adapt<TeamDto>();
+		return teamDto;
 	}
 
 	[HttpPost]

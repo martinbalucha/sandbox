@@ -1,5 +1,12 @@
 using Mapster;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Sandbox.CQRS.Domain;
+using Sandbox.CQRS.Domain.Contracts.Entities;
+using Sandbox.CQRS.Domain.Handlers;
+using Sandbox.CQRS.Domain.Interfaces;
+using Sandbox.CQRS.Persistence.LocalStorage;
 using Sandbox.CQRS.Server.Mapping;
+using System.IO.Abstractions;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,22 +20,35 @@ builder.Services.AddSwaggerGen();
 
 builder.Configuration.AddJsonFile("LocalStoragePersistenceConfiguration.json");
 
+
+builder.Services.AddMediatR(c =>
+{
+    c.Lifetime = ServiceLifetime.Singleton;
+    c.RegisterServicesFromAssembly(typeof(CreateTeamHandler).Assembly);
+});
+
+// Handlers
+builder.Services.AddSingleton<GetTeamHandler>();
+
+// Persistence
+var persistenceConfiguration = builder.Configuration.GetSection(nameof(LocalStoragePersistenceConfiguration)).Get<LocalStoragePersistenceConfiguration>();
+
+builder.Services.AddSingleton(typeof(IFile), new FileWrapper(new FileSystem()));
+builder.Services.AddSingleton(persistenceConfiguration);
+builder.Services.AddScoped(typeof(IRepository<Team>), typeof(JsonRepository));
+
+builder.WebHost.UseKestrel(o => o.AllowAlternateSchemes = true);
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 var configurationServiceAssembly = Assembly.GetAssembly(typeof(MappingConfiguration));
 if (configurationServiceAssembly != null)
 {
     TypeAdapterConfig.GlobalSettings.Scan(configurationServiceAssembly);
 }
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
