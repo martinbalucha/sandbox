@@ -4,11 +4,11 @@ using Serilog;
 
 namespace Sandbox.CQRS.Domain.Handlers;
 
-public class TeamCreatedNotificationHandler : INotificationHandler<TeamCreatedNotification>
+public class TeamCreatedNotificationLoggingHandler : INotificationHandler<TeamCreatedNotification>
 {
     private readonly ILogger logger;
 
-    public TeamCreatedNotificationHandler(ILogger logger)
+    public TeamCreatedNotificationLoggingHandler(ILogger logger)
     {
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
