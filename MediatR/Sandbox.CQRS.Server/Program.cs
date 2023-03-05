@@ -1,3 +1,4 @@
+using Serilog;
 using Mapster;
 using Sandbox.CQRS.Contracts.Interfaces;
 using Sandbox.CQRS.Domain.Contracts.Entities;
@@ -18,6 +19,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Configuration.AddJsonFile("LocalStoragePersistenceConfiguration.json");
 
+builder.Logging.ClearProviders();
+builder.Host.UseSerilog((context, service, configuration) =>
+{
+    configuration.WriteTo.Console();
+});
 
 builder.Services.AddMediatR(c =>
 {
