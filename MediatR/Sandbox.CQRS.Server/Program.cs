@@ -1,8 +1,7 @@
 using Mapster;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Sandbox.CQRS.Contracts.Interfaces;
 using Sandbox.CQRS.Domain.Contracts.Entities;
 using Sandbox.CQRS.Domain.Handlers;
-using Sandbox.CQRS.Domain.Interfaces;
 using Sandbox.CQRS.Persistence.LocalStorage;
 using Sandbox.CQRS.Server.Mapping;
 using System.IO.Abstractions;

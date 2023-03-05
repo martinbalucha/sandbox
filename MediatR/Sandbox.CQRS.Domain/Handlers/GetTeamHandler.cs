@@ -1,6 +1,6 @@
 ﻿using MediatR;
+using Sandbox.CQRS.Contracts.Interfaces;
 using Sandbox.CQRS.Domain.Contracts.Entities;
-using Sandbox.CQRS.Domain.Interfaces;
 using Sandbox.CQRS.Domain.Queries;
 
 namespace Sandbox.CQRS.Domain.Handlers;

@@ -1,5 +1,5 @@
-﻿using Sandbox.CQRS.Domain.Contracts.Entities;
-using Sandbox.CQRS.Domain.Interfaces;
+﻿using Sandbox.CQRS.Contracts.Interfaces;
+using Sandbox.CQRS.Domain.Contracts.Entities;
 using System.IO.Abstractions;
 using System.Text.Json;
 
@@ -21,11 +21,11 @@ public class JsonRepository : IRepository<Team>
         string jsonString = await file.ReadAllTextAsync(configuration.FilePath!);
 
         var teams = JsonSerializer.Deserialize<List<Team>>(jsonString)
-            ?? throw new Exception("An error occurred during the reading");
+            ?? throw new Exception("An error occurred during the file deserialization.");
 
         teams.Add(entity);
 
-        jsonString = JsonSerializer.Serialize(teams);
+        jsonString = JsonSerializer.Serialize(teams, new JsonSerializerOptions { WriteIndented = true });
         await file.WriteAllTextAsync(configuration.FilePath!, jsonString);
     }
 
@@ -34,7 +34,7 @@ public class JsonRepository : IRepository<Team>
         string jsonString = await file.ReadAllTextAsync(configuration.FilePath!);
 
         var teams = JsonSerializer.Deserialize<IEnumerable<Team>>(jsonString) 
-            ?? throw new Exception("An error occurred during the reading");
+            ?? throw new Exception("An error occurred during the file deserialization.");
 
         return teams.FirstOrDefault(t => t.Id == id);
     }

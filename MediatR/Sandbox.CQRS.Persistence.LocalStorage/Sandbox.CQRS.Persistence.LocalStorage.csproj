@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sandbox.CQRS.Domain.Contracts\Sandbox.CQRS.Domain.Contracts.csproj" />
-    <ProjectReference Include="..\Sandbox.CQRS.Domain\Sandbox.CQRS.Domain.csproj" />
   </ItemGroup>
 
 </Project>
