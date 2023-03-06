@@ -29,6 +29,26 @@ public class JsonRepository : IRepository<Team>
         await file.WriteAllTextAsync(configuration.FilePath!, jsonString);
     }
 
+    public async Task UpdateAsync(Team entity)
+    {
+        string jsonString = await file.ReadAllTextAsync(configuration.FilePath!);
+
+        var teams = JsonSerializer.Deserialize<List<Team>>(jsonString)
+            ?? throw new Exception("An error occurred during the file deserialization.");
+
+        var persistedTeam = teams.FirstOrDefault(t => t.Id == entity.Id);
+
+        if (persistedTeam is null)
+        {
+            throw new ArgumentException($"No team with ID '{entity.Id}' exists.");
+        }
+
+        persistedTeam.Name = entity.Name;
+
+        jsonString = JsonSerializer.Serialize(teams, new JsonSerializerOptions { WriteIndented = true });
+        await file.WriteAllTextAsync(configuration.FilePath!, jsonString);
+    }
+
     public async Task<Team?> FindByIdAsync(Guid id)
     {
         string jsonString = await file.ReadAllTextAsync(configuration.FilePath!);

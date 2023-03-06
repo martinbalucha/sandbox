@@ -40,4 +40,12 @@ public class TeamController : ControllerBase
 
 		return Ok(id);
 	}
+
+	[HttpPut]
+	public async Task<IActionResult> Update([FromBody] UpdateTeamCommand command)
+	{
+		await mediator.Send(command);
+
+		return Ok();
+	}
 }

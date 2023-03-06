@@ -5,5 +5,5 @@ namespace Sandbox.CQRS.Domain.Commands;
 
 public record CreateTeamCommand : IRequest<Guid>
 {
-    public string? Name { get; set; }
+    public string? Name { get; init; }
 }

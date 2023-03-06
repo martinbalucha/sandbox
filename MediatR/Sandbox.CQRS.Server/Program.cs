@@ -7,6 +7,11 @@ using Sandbox.CQRS.Persistence.LocalStorage;
 using Sandbox.CQRS.Server.Mapping;
 using System.IO.Abstractions;
 using System.Reflection;
+using MediatR;
+using Sandbox.CQRS.Domain.PipelineBehaviors;
+using FluentValidation;
+using Sandbox.CQRS.Domain.Commands;
+using Sandbox.CQRS.Domain.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,11 +40,14 @@ builder.Services.AddMediatR(c =>
 builder.Services.AddSingleton<GetTeamHandler>();
 
 // Persistence
-var persistenceConfiguration = builder.Configuration.GetSection(nameof(LocalStoragePersistenceConfiguration)).Get<LocalStoragePersistenceConfiguration>();
+var persistenceConfiguration = builder.Configuration.GetSection(nameof(LocalStoragePersistenceConfiguration)).Get<LocalStoragePersistenceConfiguration>()
+                                ?? throw new ArgumentException("Bad configuration");
 
 builder.Services.AddSingleton(typeof(IFile), new FileWrapper(new FileSystem()));
 builder.Services.AddSingleton(persistenceConfiguration);
 builder.Services.AddScoped(typeof(IRepository<Team>), typeof(JsonRepository));
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+builder.Services.AddSingleton(typeof(IValidator<UpdateTeamCommand>), typeof(UpdateTeamCommandValidator));
 
 builder.WebHost.UseKestrel(o => o.AllowAlternateSchemes = true);
 
