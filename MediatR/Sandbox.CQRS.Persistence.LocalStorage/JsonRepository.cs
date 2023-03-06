@@ -58,4 +58,14 @@ public class JsonRepository : IRepository<Team>
 
         return teams.FirstOrDefault(t => t.Id == id);
     }
+
+    public async Task<IEnumerable<Team>> ListAsync()
+    {
+        string jsonString = await file.ReadAllTextAsync(configuration.FilePath!);
+
+        var teams = JsonSerializer.Deserialize<IEnumerable<Team>>(jsonString)
+            ?? throw new Exception("An error occurred during the file deserialization.");
+
+        return teams;
+    }
 }

@@ -46,8 +46,8 @@ var persistenceConfiguration = builder.Configuration.GetSection(nameof(LocalStor
 builder.Services.AddSingleton(typeof(IFile), new FileWrapper(new FileSystem()));
 builder.Services.AddSingleton(persistenceConfiguration);
 builder.Services.AddScoped(typeof(IRepository<Team>), typeof(JsonRepository));
-builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddSingleton(typeof(IValidator<UpdateTeamCommand>), typeof(UpdateTeamCommandValidator));
+builder.Services.AddTransient(typeof(IPipelineBehavior<UpdateTeamCommand, Unit>), typeof(ValidationBehavior<UpdateTeamCommand, Unit>));
 
 builder.WebHost.UseKestrel(o => o.AllowAlternateSchemes = true);
 

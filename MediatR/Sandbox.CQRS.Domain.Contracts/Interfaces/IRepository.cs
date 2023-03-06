@@ -9,4 +9,6 @@ public interface IRepository<T> where T : IEntity
     Task UpdateAsync(T entity);
 
     Task<T?> FindByIdAsync(Guid id);
+
+    Task<IEnumerable<T>> ListAsync();
 }

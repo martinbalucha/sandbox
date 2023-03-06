@@ -33,6 +33,16 @@ public class TeamController : ControllerBase
 		return teamDto;
 	}
 
+	[HttpGet()]
+	public async Task<ActionResult<IEnumerable<TeamDto>>> List()
+	{
+		var query = new ListTeamsQuery();
+		var teams = await mediator.Send(query);
+
+		var result = teams.Adapt<IEnumerable<TeamDto>>();
+		return Ok(result);
+	}
+
 	[HttpPost]
 	public async Task<ActionResult<Guid>> Create([FromBody] CreateTeamCommand command)
 	{
