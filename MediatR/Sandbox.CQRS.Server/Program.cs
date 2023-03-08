@@ -36,9 +36,6 @@ builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssembly(typeof(CreateTeamHandler).Assembly);
 });
 
-// Handlers
-builder.Services.AddSingleton<GetTeamHandler>();
-
 // Persistence
 var persistenceConfiguration = builder.Configuration.GetSection(nameof(LocalStoragePersistenceConfiguration)).Get<LocalStoragePersistenceConfiguration>()
                                 ?? throw new ArgumentException("Bad configuration");
