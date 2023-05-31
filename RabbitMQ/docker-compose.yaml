@@ -2,9 +2,13 @@ version: '3.8'
 services:
   rabbitmq:
     image: rabbitmq:3-management
-    environment:
-      hostname: rmq
+    hostname: chyron-rmq
     container_name: rabbit-server
     ports:
       - '15672:15672'
       - '5672:5672'
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@chyron-rmq
+
+volumes:
+  rabbitmq-data:
