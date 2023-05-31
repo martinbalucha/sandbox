@@ -31,7 +31,17 @@
   },
   {
     "Id": "07e40bdc-8cbc-4d3d-9c27-891750464b36",
-    "Name": "AC Milan",
+    "Name": "A.C. Milan",
+    "Players": null
+  },
+  {
+    "Id": "b4785e81-68ff-4b9e-88b4-87c99efc6fba",
+    "Name": "Ajax Amsterdam",
+    "Players": null
+  },
+  {
+    "Id": "cd1aa94c-3ac8-4788-9a05-5b2c852806ad",
+    "Name": "AS Roma",
     "Players": null
   }
 ]
