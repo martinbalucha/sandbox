@@ -1,0 +1,47 @@
+[
+  {
+    "Id": "563f336b-79af-48e4-aaad-f3e2ac6ebbe8",
+    "Name": "Chelsea F.C.",
+    "Players": null
+  },
+  {
+    "Id": "0505b775-0168-4e34-aac9-75be7692949f",
+    "Name": "Real Madrid C.F.",
+    "Players": null
+  },
+  {
+    "Id": "d7d37a30-7d4a-4683-b4f5-a47877b88574",
+    "Name": "Inter Milan",
+    "Players": null
+  },
+  {
+    "Id": "4fea88be-3fd9-4357-9d3d-03d13d3b8123",
+    "Name": "Arsenal F.C.",
+    "Players": null
+  },
+  {
+    "Id": "6e3664ab-c13d-467d-a1bb-75bb27e946fa",
+    "Name": "Paris Saint-Germain",
+    "Players": null
+  },
+  {
+    "Id": "d8eee5c5-50c1-45cc-bf9d-bbc0d82aa8b2",
+    "Name": "Manchester City F.C.",
+    "Players": null
+  },
+  {
+    "Id": "07e40bdc-8cbc-4d3d-9c27-891750464b36",
+    "Name": "A.C. Milan",
+    "Players": null
+  },
+  {
+    "Id": "b4785e81-68ff-4b9e-88b4-87c99efc6fba",
+    "Name": "Ajax Amsterdam",
+    "Players": null
+  },
+  {
+    "Id": "cd1aa94c-3ac8-4788-9a05-5b2c852806ad",
+    "Name": "AS Roma",
+    "Players": null
+  }
+]
