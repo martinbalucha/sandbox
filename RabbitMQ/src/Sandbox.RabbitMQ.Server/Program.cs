@@ -1,5 +1,7 @@
 using MassTransit;
+using Sandbox.RabbitMQ.Contracts;
 using Sandbox.RabbitMQ.MessagingConfiguration;
+using Sandbox.RabbitMQ.Publisher;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +22,12 @@ builder.Services.AddMassTransit(busRegistrationConfigurator =>
             h.Username(brokerConfiguration.Username);
             h.Password(brokerConfiguration.Password);
         });
+
+        //configurator.Send<>();
     });
 });
+
+builder.Services.AddTransient<IMessageBus, MassTransitMessageBus>();
 
 var app = builder.Build();
 
