@@ -1,12 +1,21 @@
 using MassTransit;
+using Microsoft.Extensions.Options;
+using Sandbox.RabbitMQ.Application.MessagingConfiguration;
 using Sandbox.RabbitMQ.Contracts;
-using Sandbox.RabbitMQ.MessagingConfiguration;
 using Sandbox.RabbitMQ.Publisher;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// RabbitMQ
 builder.Services.Configure<MessageBrokerConfiguration>(
+
     builder.Configuration.GetSection(nameof(MessageBrokerConfiguration)));
 
 builder.Services.AddMassTransit(busRegistrationConfigurator =>
@@ -15,15 +24,13 @@ builder.Services.AddMassTransit(busRegistrationConfigurator =>
 
     busRegistrationConfigurator.UsingRabbitMq((context, configurator) =>
     {
-        var brokerConfiguration = context.GetRequiredService<MessageBrokerConfiguration>();
+        var brokerConfiguration = context.GetRequiredService<IOptions<MessageBrokerConfiguration>>();
 
-        configurator.Host(new Uri(brokerConfiguration.Host), h =>
+        configurator.Host(new Uri(brokerConfiguration.Value.Host), h =>
         {
-            h.Username(brokerConfiguration.Username);
-            h.Password(brokerConfiguration.Password);
+            h.Username(brokerConfiguration.Value.Username);
+            h.Password(brokerConfiguration.Value.Password);
         });
-
-        //configurator.Send<>();
     });
 });
 
@@ -32,20 +39,14 @@ builder.Services.AddTransient<IMessageBus, MassTransitMessageBus>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
+app.MapControllers();
 
 app.Run();

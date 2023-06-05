@@ -1,4 +1,4 @@
-﻿namespace Sandbox.RabbitMQ.MessagingConfiguration;
+﻿namespace Sandbox.RabbitMQ.Consumer.MessagingConfiguration;
 
 public class MessageBrokerConfiguration
 {
