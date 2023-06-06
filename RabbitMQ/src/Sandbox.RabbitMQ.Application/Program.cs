@@ -1,5 +1,4 @@
 using MassTransit;
-using MassTransit.RabbitMqTransport.Topology;
 using Microsoft.Extensions.Options;
 using Sandbox.RabbitMQ.Application.MessagingConfiguration;
 using Sandbox.RabbitMQ.Contracts;
