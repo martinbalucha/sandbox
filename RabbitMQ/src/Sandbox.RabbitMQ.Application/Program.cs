@@ -1,7 +1,9 @@
 using MassTransit;
+using MassTransit.RabbitMqTransport.Topology;
 using Microsoft.Extensions.Options;
 using Sandbox.RabbitMQ.Application.MessagingConfiguration;
 using Sandbox.RabbitMQ.Contracts;
+using Sandbox.RabbitMQ.Contracts.Events;
 using Sandbox.RabbitMQ.Publisher;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,21 @@ builder.Services.AddMassTransit(busRegistrationConfigurator =>
         {
             h.Username(brokerConfiguration.Value.Username);
             h.Password(brokerConfiguration.Value.Password);
+        });
+
+        configurator.Message<CarStartedEvent>(x =>
+        {
+            x.SetEntityName(nameof(CarStartedEvent));
+        });
+        configurator.Publish<CarStartedEvent>(x =>
+        {
+            x.Durable = true;
+            x.ExchangeType = "direct";
+        });
+
+        configurator.Send<CarStartedEvent>(x =>
+        {
+            x.UseRoutingKeyFormatter(ctx => ctx.Message.Brand);
         });
     });
 });

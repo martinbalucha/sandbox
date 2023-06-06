@@ -1,3 +1,3 @@
 ﻿namespace Sandbox.RabbitMQ.Contracts.Events;
 
-public record CarStartedEvent(string Vin, DateTimeOffset Time);
+public record CarStartedEvent(string Vin, string Brand, DateTimeOffset Time);

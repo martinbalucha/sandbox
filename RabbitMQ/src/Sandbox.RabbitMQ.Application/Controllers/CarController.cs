@@ -19,7 +19,7 @@ public class CarController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Start([FromBody] CarStartDto carStart)
     {
-        var carStartedEvent = new CarStartedEvent(carStart.Vin, DateTimeOffset.Now);
+        var carStartedEvent = new CarStartedEvent(carStart.Vin, carStart.Brand, DateTimeOffset.Now);
 
         await messageBus.PublishAsync(carStartedEvent);
 
